@@ -4,6 +4,14 @@
 #include <termios.h>
 #include "serial/serial.h"
 
+#ifndef B576000
+#define B576000 576000
+#endif
+
+#ifndef B1000000
+#define B1000000 1000000
+#endif
+
 int serial_open(const char *device, int baudrate)
 {
     if (!device) {
