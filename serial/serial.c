@@ -54,8 +54,10 @@ int serial_open(const char *device, int baudrate)
         case 19200:  cfsetospeed(&options, B19200);  break;
         case 38400:  cfsetospeed(&options, B38400);  break;
         case 115200: cfsetospeed(&options, B115200); break;
+#ifdef _POSIX_C_SOURCE
         case 576000: cfsetospeed(&options, B576000); break;
         case 1000000: cfsetospeed(&options, B1000000); break;
+#endif
         default:
             fprintf(stderr, "warning: baud rate %u is not supported, using 115200.\n", baudrate);
             cfsetospeed(&options, B115200);
